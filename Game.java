@@ -58,6 +58,7 @@ public class Game extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Word Scramble Game");
 
         gameTitle.setFont(new java.awt.Font("Eras Bold ITC", 0, 48)); // NOI18N
         gameTitle.setForeground(new java.awt.Color(0, 51, 255));
@@ -65,6 +66,7 @@ public class Game extends javax.swing.JFrame {
 
         scrambledWord.setFont(new java.awt.Font("Eras Light ITC", 0, 24)); // NOI18N
         scrambledWord.setForeground(new java.awt.Color(0, 0, 153));
+        scrambledWord.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scrambledWord.setText("[word]");
         scrambledWord.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -155,8 +157,8 @@ public class Game extends javax.swing.JFrame {
         //Allow user to guess what the word is
         String guess = playerText.getText();
         //Check if user is correct and add to progress bar
-        if (guess.equalsIgnoreCase(scrambledWord.getText()))
-        {
+        //if (guess.equalsIgnoreCase(word))                                     //not sure how I would check the guess back to the original word
+        {                                                                       //maybe actions performed under start button event needs to be moved?
             
         }
         
@@ -191,13 +193,13 @@ public class Game extends javax.swing.JFrame {
             //Read a word, 1 line at a time
             String word = inputFile.nextLine();
             //Scrambles word
-            Random r = new Random();
+            Random r = new Random();                                            //not sure what this is
             String sWord = GameAssignment.scramble(r, word);
             //Displays word
-            scrambledWord.setText(sWord);
+            scrambledWord.setText(sWord);                                       //the scramble seems to be wrong, it turns to gibberish
+        }
             //Close File
             inputFile.close();
-        }
     }//GEN-LAST:event_startButtonActionPerformed
 
     /**
@@ -228,10 +230,8 @@ public class Game extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Game().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Game().setVisible(true);
         });
     }
 
