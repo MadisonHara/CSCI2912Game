@@ -13,4 +13,9 @@ sold
 hollow
 own
 fossil
+romance
+ultimate
+skeleton
+late
+friend
 
